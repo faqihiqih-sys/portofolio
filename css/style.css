@@ -47,7 +47,7 @@ body {
   position: relative;
 }
 
-/* Background Canvas */
+/* 2. BACKGROUND CANVAS */
 #cyber-canvas {
   position: fixed;
   top: 0;
@@ -58,7 +58,7 @@ body {
   pointer-events: none;
 }
 
-/* Top Nav */
+/* 3. TOP NAVIGATION (DESKTOP) */
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -114,7 +114,7 @@ body {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-/* Main Container */
+/* 4. MAIN CONTAINER & HERO */
 .container {
   width: 82%;
   max-width: 900px;
@@ -126,7 +126,6 @@ body {
   justify-content: center;
 }
 
-/* Hero Section */
 .hero-section {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -173,7 +172,7 @@ body {
   animation: blink 1s infinite;
 }
 
-/* Spatial Grid Layout Desktop (Jarak antar Card Diperlebar) */
+/* 5. SPATIAL GRID & CARDS */
 .spatial-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -192,15 +191,13 @@ body {
   padding: 1.6rem;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transform-style: preserve-3d;
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s;
   transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
-
 
 .spatial-card:hover {
   border-color: rgba(255, 255, 255, 0.25);
@@ -253,7 +250,7 @@ body {
   white-space: nowrap;
 }
 
-/* Stats Container */
+/* 6. STATS & PRICING CHIPS */
 .stats-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -283,7 +280,6 @@ body {
   color: var(--text-dim);
 }
 
-/* Pricing / Tech Chips Bar Desktop */
 .pricing-bar {
   display: flex;
   gap: 0.5rem;
@@ -322,7 +318,6 @@ body {
   background: rgba(6, 182, 212, 0.08);
 }
 
-/* Efek Hover & Klik untuk Chip Kontak */
 a.price-chip {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-tap-highlight-color: transparent;
@@ -344,7 +339,7 @@ a.price-chip:focus strong {
   color: var(--cyan-primary);
 }
 
-/* Cert & Single Tab Card */
+/* 7. CERTIFICATE CARD */
 .cert-card {
   grid-column: span 2;
   display: flex;
@@ -416,7 +411,7 @@ a.price-chip:focus strong {
   box-shadow: 0 0 15px var(--cyan-glow);
 }
 
-/* Cyber Buttons */
+/* 8. BUTTONS & INPUTS */
 .cyber-btn {
   width: 100%;
   padding: 0.85rem;
@@ -458,22 +453,49 @@ a.price-chip:focus strong {
   box-shadow: 0 0 20px var(--orange-glow);
 }
 
-/* Cyber Dock Mobile */
+.cyber-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.cyber-input::placeholder {
+  color: var(--text-dim);
+}
+
+.cyber-input:focus {
+  border-color: var(--cyan-primary);
+  box-shadow: 0 0 12px var(--cyan-glow);
+  background: rgba(6, 182, 212, 0.05);
+}
+
+/* 9. CYBER DOCK (FLOATING NAVIGATION MOBILE) */
 .cyber-dock {
   display: none;
   position: fixed;
-  bottom: 25px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(10, 15, 26, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.5rem 0.8rem;
-  border-radius: 35px;
+  background: rgba(10, 15, 26, 0.92);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
   backdrop-filter: blur(20px);
-  gap: 0.8rem;
+  -webkit-backdrop-filter: blur(20px);
+  gap: 0.6rem;
   align-items: center;
-  z-index: 100;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 15px rgba(6, 182, 212, 0.15);
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(6, 182, 212, 0.25);
+  width: auto;
+  max-width: 92vw;
 }
 
 .dock-btn {
@@ -481,11 +503,20 @@ a.price-chip:focus strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 0.9rem;
+  width: 46px;
+  height: 46px;
+  padding: 0;
   border-radius: 14px;
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dock-btn svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .dock-btn:hover {
@@ -494,52 +525,40 @@ a.price-chip:focus strong {
 
 .dock-btn.active {
   color: #ffffff;
-  background: rgba(6, 182, 212, 0.18);
-  box-shadow: inset 0 0 12px rgba(6, 182, 212, 0.2);
+  background: rgba(6, 182, 212, 0.22);
+  box-shadow: inset 0 0 12px rgba(6, 182, 212, 0.3), 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
 .dock-btn.active svg {
-  filter: drop-shadow(0 0 6px var(--cyan-primary));
+  filter: drop-shadow(0 0 8px var(--cyan-primary));
+  transform: scale(1.1);
 }
 
 .dock-btn.active::before {
   content: "";
   position: absolute;
-  top: -8px;
-  left: 15%;
-  width: 70%;
+  top: -6px;
+  left: 20%;
+  width: 60%;
   height: 3px;
   background: var(--cyan-primary);
   border-radius: 3px;
-  box-shadow: 0 0 10px var(--cyan-primary), 0 0 4px var(--cyan-primary);
+  box-shadow: 0 0 10px var(--cyan-primary);
 }
 
 .dock-btn.active::after {
   content: "";
   position: absolute;
-  bottom: -8px;
-  left: 15%;
-  width: 70%;
+  bottom: -6px;
+  left: 20%;
+  width: 60%;
   height: 3px;
   background: var(--cyan-primary);
   border-radius: 3px;
-  box-shadow: 0 0 10px var(--cyan-primary), 0 0 4px var(--cyan-primary);
+  box-shadow: 0 0 10px var(--cyan-primary);
 }
 
-/* Keyframes */
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* ==========================================
-   CYBER FOOTER (LAYOUT 2 BARIS)
-   ========================================== */
+/* 10. CYBER FOOTER */
 .cyber-footer {
   width: 100%;
   background: rgba(6, 9, 17, 0.85);
@@ -639,28 +658,18 @@ a.price-chip:focus strong {
   letter-spacing: 1px;
 }
 
-/* Responsif Mode HP / Tablet */
-@media (max-width: 1024px) {
-  .cyber-footer {
-    padding-bottom: 6.5rem;
-  }
-
-  .footer-top-row {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.2rem;
-  }
-
-  .footer-links {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+/* 11. KEYFRAMES */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
 }
 
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
-/* ==========================================
-   RESPONSIVE HP & TABLET (MAX-WIDTH: 1024PX)
-   ========================================== */
+/* 12. RESPONSIVE MEDIA QUERIES (HP & TABLET: MAX-WIDTH 1024PX) */
 @media (max-width: 1024px) {
   .container {
     width: 95%;
@@ -699,21 +708,6 @@ a.price-chip:focus strong {
     grid-column: span 1 !important;
   }
 
-  .pricing-bar {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    flex-direction: row !important;
-    gap: 0.5rem;
-    width: 100%;
-  }
-
-  .price-chip {
-    flex: 0 1 auto !important;
-    width: auto !important;
-    padding: 0.45rem 0.8rem;
-    text-align: center;
-  }
-
   .cert-card {
     flex-direction: column !important;
     align-items: center !important;
@@ -743,10 +737,6 @@ a.price-chip:focus strong {
     gap: 1.2rem;
   }
 
-  .footer-meta {
-    text-align: center;
-  }
-
   .footer-links {
     justify-content: center;
     flex-wrap: wrap;
@@ -757,29 +747,4 @@ a.price-chip:focus strong {
     text-align: center;
     gap: 1.2rem;
   }
-
-}
-
-/* Styling Input Form Cyber */
-.cyber-input {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--panel-border);
-  border-radius: 10px;
-  padding: 0.8rem 1rem;
-  color: var(--text-main);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.cyber-input::placeholder {
-  color: var(--text-dim);
-}
-
-.cyber-input:focus {
-  border-color: var(--cyan-primary);
-  box-shadow: 0 0 12px var(--cyan-glow);
-  background: rgba(6, 182, 212, 0.05);
 }
